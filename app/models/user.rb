@@ -11,10 +11,11 @@
 
 class User < ActiveRecord::Base
   # self is not optional on assigning variables.
-  before_save { self.email = email.downcase }
+  # Another way is by using a bang method to permanently change the object in memory.
+  before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
   # All capitals means constants.
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   # ActiveRecord uniqueness does not ensure DB uniqueness.
   has_secure_password
