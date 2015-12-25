@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'annotate'
 gem 'autoprefixer-rails'
+gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml-rails'
 
